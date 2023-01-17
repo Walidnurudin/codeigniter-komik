@@ -39,6 +39,10 @@ class Home extends BaseController
     {
         $komik = $this->bukuModel->getBuku($slug);
 
+        if (empty($komik)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Judul Komik ' . $slug . ' tidak ditemukan.');
+        }
+
         $data = [
             'title' => "Detail {$slug} | komik",
             'komik' => $komik,
