@@ -89,13 +89,12 @@ class Home extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
 
         return redirect()->to('/');
+    }
 
-        // lakukan validasi
-        // $validation =  \Config\Services::validation();
-        // $validation->setRules(['content' => 'required']);
-        // $isDataValid = $validation->withRequest($this->request)->run();
-
-        // if ($isDataValid) {
-        // }
+    public function delete($id)
+    {
+        $this->bukuModel->delete($id);
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        return redirect()->to('/');
     }
 }

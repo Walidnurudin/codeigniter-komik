@@ -22,7 +22,17 @@
                 <th scope="row"><?= $k['id']; ?></th>
                 <td><?= $k['name']; ?></td>
                 <td><?= $k['slug']; ?></td>
-                <td><a href="/detail/<?= $k['slug'] ?>" class="btn btn-link">Link</a></td>
+                <td>
+
+                    <a href="/detail/<?= $k['slug'] ?>" class="btn btn-link">Detail</a>
+
+                    <form action="/<?= $k['id']; ?>" method="post">
+                        <?= csrf_field(); ?>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?');">Delete</button>
+                    </form>
+
+                </td>
             </tr>
         <?php endforeach ?>
     </tbody>
