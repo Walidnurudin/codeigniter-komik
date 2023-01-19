@@ -43,6 +43,9 @@ $routes->get('/detail/(:any)', 'Home::detail/$1');
 $routes->get('/create', 'Home::create_page');
 $routes->add('/create', 'Home::create');
 
+$routes->get('/edit/(:segment)', 'Home::edit_page/$1');
+$routes->add('/edit/(:num)', 'Home::edit/$1');
+
 // $routes->group('admin', function ($routes) {
 //     $routes->get('news', 'NewsAdmin::index');
 //     $routes->get('news/(:segment)/preview', 'NewsAdmin::preview/$1');

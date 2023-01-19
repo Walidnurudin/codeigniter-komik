@@ -24,9 +24,11 @@
                 <td><?= $k['slug']; ?></td>
                 <td>
 
-                    <a href="/detail/<?= $k['slug'] ?>" class="btn btn-link">Detail</a>
+                    <a href="/detail/<?= $k['slug'] ?>" class="btn btn-primary">Detail</a>
 
-                    <form action="/<?= $k['id']; ?>" method="post">
+                    <a href="/edit/<?= $k['slug'] ?>" class="btn btn-warning">Edit</a>
+
+                    <form action="/<?= $k['id']; ?>" method="post" class="d-inline">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?');">Delete</button>

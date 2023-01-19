@@ -91,6 +91,59 @@ class Home extends BaseController
         return redirect()->to('/');
     }
 
+    public function edit_page($slug)
+    {
+        $komik = $this->bukuModel->getBuku($slug);
+
+        $data = [
+            'title' => "Edit {$slug} | komik",
+            'komik' => $komik,
+            'validation' => \Config\Services::validation(),
+        ];
+
+        return view('edit', $data);
+    }
+
+    public function edit($id)
+    {
+
+        // cek name komik
+        $komikLama = $this->bukuModel->getBuku($this->request->getVar('slug'));
+        if ($komikLama['name'] == $this->request->getVar('name')) {
+            $rule_judul = 'required';
+        } else {
+            $rule_judul = 'required|is_unique[buku.name]';
+        }
+
+        // validate input
+        if (!$this->validate([
+            'name' => [
+                'rules' => $rule_judul,
+                'errors' => [
+                    'required' => '{field} komik harus diisi',
+                    'is_unique' => '{field} komik sudah terdaftar',
+                ],
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/edit/' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+        }
+
+        // update data
+        $slug = url_title($this->request->getVar('name'), '-', true);
+        $this->bukuModel->save([
+            'id' => $id,
+            'name' => $this->request->getVar('name'),
+            'slug' => $slug,
+            'content' => $this->request->getVar('content'),
+            'writer' => $this->request->getVar('writer'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data berhasil diubah.');
+
+        return redirect()->to('/');
+    }
+
     public function delete($id)
     {
         $this->bukuModel->delete($id);
