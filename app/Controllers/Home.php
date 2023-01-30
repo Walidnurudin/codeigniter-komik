@@ -79,6 +79,10 @@ class Home extends BaseController
 
         // insert data
         $slug = url_title($this->request->getVar('name'), '-', true);
+
+        print_r($this->request->getVar());
+        exit;
+
         $this->bukuModel->save([
             'name' => $this->request->getVar('name'),
             'slug' => $slug,
