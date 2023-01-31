@@ -1,6 +1,15 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->Section('content'); ?>
 
+<div class="row">
+    <div class="col-6 mb-3">
+        <form action="" method="get" class="d-flex">
+            <input type="text" class="form-control me-3" name="keyword" placeholder="search ...">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
