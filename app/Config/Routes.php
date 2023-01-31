@@ -46,6 +46,9 @@ $routes->post('/create', 'Home::create');
 $routes->get('/edit/(:segment)', 'Home::edit_page/$1');
 $routes->post('/edit/(:num)', 'Home::edit/$1');
 
+
+$routes->get('/orang', 'Orang::index');
+
 // $routes->group('admin', function ($routes) {
 //     $routes->get('news', 'NewsAdmin::index');
 //     $routes->get('news/(:segment)/preview', 'NewsAdmin::preview/$1');

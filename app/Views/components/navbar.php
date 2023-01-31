@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('create') ?>">Create</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('orang') ?>">Person</a>
+                </li>
             </ul>
         </div>
     </div>
