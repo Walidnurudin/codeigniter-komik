@@ -14,4 +14,9 @@ class OrangModel extends Model
     {
         return $this->table('orang')->like('name', $keyword)->orLike('address', $keyword);
     }
+
+    public function getById($id)
+    {
+        return $this->where(['id' => $id])->first();
+    }
 }

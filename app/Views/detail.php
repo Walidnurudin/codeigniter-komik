@@ -7,6 +7,7 @@
     <!-- <img src="..." class="card-img-top" alt="..."> -->
     <div class="card-body">
         <h5 class="card-title"><?= $komik['name']; ?></h5>
+        <p class="card-text text-primary"><?= $writer['name'] ?></p>
         <p class="card-text"><?= $komik['content']; ?></p>
     </div>
 </div>

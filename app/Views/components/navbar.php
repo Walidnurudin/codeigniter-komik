@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="<?= base_url() ?>">Home</a>
@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('create') ?>">Create</a>
                 </li>
+            </ul>
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('orang') ?>">Person</a>
                 </li>
