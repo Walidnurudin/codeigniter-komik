@@ -18,7 +18,7 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('orang') ?>">Person</a>
+                    <a class="nav-link" href="<?= base_url('orang') ?>">Person </a>
                 </li>
             </ul>
         </div>
