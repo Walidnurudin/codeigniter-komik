@@ -28,11 +28,15 @@
 
                     <a href="/edit/<?= $k['slug'] ?>" class="btn btn-warning">Edit</a>
 
-                    <form action="/<?= $k['id']; ?>" method="post" class="d-inline">
+                    <!-- <form action="/<?= $k['id']; ?>" method="post" class="d-inline">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?');">Delete</button>
-                    </form>
+                    </form> -->
+
+                    <a href="#" type="button" class="btn btn-danger" data-btn="delete-modal" data-id="<?= $k['id']; ?>" data-name="<?= $k['name']; ?>">
+                        <i class="far fa-trash-alt fa-xs"></i>
+                    </a>
 
                 </td>
             </tr>
@@ -40,4 +44,40 @@
     </tbody>
 </table>
 
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete <span id="modal-komik-name"></span> ?</h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/" method="post">
+                    <?= csrf_field() ?>
+                    <input type="hidden" id="delete-komik-id" name="id">
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<?= $this->endSection(""); ?>
+
+<?= $this->Section('scripts'); ?>
+<script>
+    $(document).ready(function() {
+        $('a[data-btn="delete-modal"]').click(function() {
+            const dataId = $(this).attr('data-id');
+            const dataName = $(this).attr('data-name');
+
+            $('#modal-komik-name').html(dataName);
+            $('#delete-komik-id').val(dataId);
+            $('#deleteModal').modal('show');
+        })
+
+    });
+</script>
 <?= $this->endSection(""); ?>

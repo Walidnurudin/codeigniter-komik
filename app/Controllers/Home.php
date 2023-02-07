@@ -148,8 +148,10 @@ class Home extends BaseController
         return redirect()->to('/');
     }
 
-    public function delete($id)
+    public function delete()
     {
+        $id = $this->request->getPost('id');
+
         $this->bukuModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/');
